@@ -36,7 +36,11 @@ RSpec.describe User, type: :model do
   it{ is_expected.to validate_presence_of(:last_name) }
   it{ is_expected.to validate_presence_of(:email) }
   it{ is_expected.to  validate_uniqueness_of(:email).ignoring_case_sensitivity }
+
   it{ is_expected.to have_many(:passive_relationships).with_foreign_key(:followed_id).class_name('Relationship') }
-  it{ is_expected.to have_many(:followers).through(:passive_relationships).source(:followed) }
+  it{ is_expected.to have_many(:followers).through(:passive_relationships).source(:follower) }
+
+  it{ is_expected.to have_many(:active_relationships).with_foreign_key(:follower_id).class_name('Relationship') }
+  it{ is_expected.to have_many(:followings).through(:active_relationships).source(:followed) }
 
 end
