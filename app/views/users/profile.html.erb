@@ -10,30 +10,26 @@
     <div class="col-md-8 basic-info">
       <div class="user-wrapper">
         <div class="username"><%= @user.username %></div><%= render "follow" %>
-
         <% if @user == current_user %>
           <%= link_to 'Edit', edit_user_registration_path, class:"edit-profile button" if can_edit_profile(@user.id) %>
         <% end %>
       </div>
       <ul class="posts">
-
         <li>
           <span>
             <%= @user.posts.count %></span>
           posts</li>
         <li>
           <span>
-            <%= @user.followers.count %></span><%= link_to "followers", followers_path(current_user.username), class:"text-dark" %></li>
+            <%= @user.followers.count %></span><%=  link_to "followers", followers_path(@user.username), class:"text-dark"  %></li>
         <li>
           <span>
-            <%= @user.followings.count %></span><%= link_to "followings", following_path(current_user.username), class:"text-dark" %></li>
-
+            <%= @user.followings.count %></span><%=  link_to "followings", following_path(@user.username), class:"text-dark"  %></li>
       </ul>
       <h2 class="name"><%=@user.full_name %></h2>
       <%= simple_format @user.bio %>
     </div>
   </div>
-
   <div class="user-images">
     <% @posts.each do |post|%>
       <div class="wrapper">

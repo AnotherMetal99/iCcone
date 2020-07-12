@@ -9,9 +9,6 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  def is_liked user
-    Like.find_by(user_id: user.id, post_id: id)
-  end
 
   def thumbnail
       if image.attached?

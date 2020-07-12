@@ -8,10 +8,6 @@ class UsersController < ApplicationController
   @comment = Comment.new
   end
 
-  def followings
-  @followings = User.where.not(id: current_user.followings)
-  end
-
   def profile
     @posts = Post.active
     @posts = @user.posts.active

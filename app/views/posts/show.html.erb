@@ -18,9 +18,7 @@
     <p><%= @post.likes.count %>
       <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
     <%= @post.body %><hr/>
-
     <%= render "shared/comments" %>
-
     <div class="input-group mb-3">
       <%= form_with model: [@post, @comment], local: true do |f| %>
       <hr/>
@@ -31,7 +29,6 @@
     <% end %>
   </div>
 </div>
-
 <div class="delete">
   <% if current_user.posts.exists?(@post.id) %>
     <%= link_to 'Remove',post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
